@@ -19,6 +19,7 @@ class Invoices extends Component
     public $quantity_value;
     public $user_id;
     public $category_id;
+    public $status;
     public $modalId;
     public $modalForVisible = false;
 
@@ -52,6 +53,7 @@ class Invoices extends Component
             'quantity_value' => ['required'],
             'user_id' => ['required'],
             'category_id' => ['required'],
+
         ];
     }
 
@@ -68,6 +70,7 @@ class Invoices extends Component
             'quantity_value' => $this->quantity_value,
             'user_id' => $this->user_id,
             'category_id' => $this->category_id,
+            'status' => $this->status
         ];
     }
 
@@ -78,6 +81,7 @@ class Invoices extends Component
         $this->category_id = $data->category_id;
         $this->quantity_type = $data->quantity_type;
         $this->quantity_value = $data->quantity_value;
+        $this->status = $data->status;
     }
 
     public function store()
@@ -100,7 +104,6 @@ class Invoices extends Component
         $this->modalForVisible = false;
         $this->modelFormReset();
 
-        session()->flash('message' , ' Invoice Updated Successfully');
     }
 
     public function all_invoices()

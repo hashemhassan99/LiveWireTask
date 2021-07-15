@@ -14,8 +14,7 @@
             <th class="px-6 py-3 border-b-2 border-gray-200 text-left text-blue-500 tracking-wider">Status</th>
             <th class="px-6 py-3 border-b-2 border-gray-200 text-left text-blue-500 tracking-wider">Quantity Type</th>
             <th class="px-6 py-3 border-b-2 border-gray-200 text-left text-blue-500 tracking-wider">Quantity Value</th>
-            {{--            <th class="px-6 py-3 border-b-2 border-gray-200 text-left text-blue-500 tracking-wider">Date</th>--}}
-            <th class="px-6 py-3 border-b-2 border-gray-200 text-left text-blue-500 tracking-wider">Action</th>
+                       <th class="px-6 py-3 border-b-2 border-gray-200 text-left text-blue-500 tracking-wider">Action</th>
         </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
@@ -53,11 +52,6 @@
         <x-slot name="title">
             {{$modalId ? 'update Invoice': ' Create Invoice'}}
         </x-slot>
-        @if (session()->has('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
         <x-slot name="content">
 
             <div class="mt-4">
@@ -94,6 +88,14 @@
                 @error('quantity_value')
                 <span class="text-red-900 text-sm">{{$message}}</span>
                 @enderror
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="status" value="Status"></x-jet-label>
+                <select class="rounded w-full" wire:model="status">
+                    <option value="0">InActive</option>
+                    <option value="1">Active</option>
+                </select>
             </div>
 
 
